@@ -10,6 +10,9 @@ urlpatterns = patterns('',
     (r'^media/(?P<path>.*)$', 'django.views.static.serve', {'document_root': settings.MEDIA_ROOT }),
 
     url(r'home/$', 'apps.administration.views.home', name='home'),
+    url(r'about/$', 'apps.administration.views.about', name='about'),
+    url(r'register/$', 'apps.administration.views.register', name='home'),
+
     url(r'^login/$', 'django.contrib.auth.views.login', 
     {'template_name': 'login.html'}),
 

@@ -1,44 +1,71 @@
 from django.contrib.auth.decorators import login_required
 from django.conf import settings
 
-from django.shortcuts import *
-from django.http import *
+from django.shortcuts import render_to_response
 
-from apps.administration.models import SignUp
+from apps.administration.models import Register
 
 @login_required
 def login(request):
-	return render_to_response('signin.html')
+    return render_to_response('signin.html')
 
 @login_required
 def home(request):
-	param = {}
-	param['username'] = request.user
-	param['media'] = settings.MEDIA_URL
-	return render_to_response('biz/index.html', param)
+    param = {}
+    param['username'] = request.user
+    param['media_url'] = settings.MEDIA_URL
+    param['base_url'] = settings.BASE_URL
+    return render_to_response('biz/index.html', param)
+
+def about(request):
+    param = {}
+    param['username'] = request.user
+    param['media_url'] = settings.MEDIA_URL
+    param['base_url'] = settings.BASE_URL
+    return render_to_response('biz/about.html', param)
 
 @login_required
-#def register(request):
-#	param = {}
-#	param['username'] = request.user
-#	return render_to_response('register.html', param)
 def register(request):
     '''Render the regisration form on the interface'''
-    count = 0
+    param = {}
+    param['username'] = request.user
+    param['media_url'] = settings.MEDIA_URL
+    param['base_url'] = settings.BASE_URL
+
     def errorHandle(error):
-        form = SignUp()
-        return render_to_response('register.html', {'error' : error,'form' : form,})
+        form = Register()
+
+        param = {}
+        param['username'] = request.user
+        param['media_url'] = settings.MEDIA_URL
+        param['base_url'] = settings.BASE_URL
+        param['error'] = error
+        param['form'] = form
+        return render_to_response('biz/register.html', param)
 
     if request.method == 'POST':
-        form = GetCSVFile(request.POST, request.FILES) #Get the CSV file from the form
+        form = Register(request.POST)
+        
+
         if form.is_valid():
             message = request.POST['message']
-            error = "welcome to RBD!"
-            return render_to_response('register.html', {'error': error,'form' : form,})
+            error = "Welcome to Donor Link! Please check your email"
+            param['form'] = form
+            param['error'] = error
+            param['message'] = message
+
+            #Send a user a welcome email. If you can, also send an sms
+            return render_to_response('register.html', param)
         else:
-            form = GetCSVFile()
+            form = Register()
             error = "Something in the form is invalid"
-            return render_to_response('register.html', {'error' : error,'form' : form,})
+
+            param['form'] = form
+            param['error'] = error
+
+            return render_to_response('biz/register.html', param)
     else:
-        form = SignUp()
-    return render_to_response('register.html', {'form': form})
+        form = Register()
+        param['form'] = form
+        
+    return render_to_response('biz/register.html', param)

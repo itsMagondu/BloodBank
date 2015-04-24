@@ -14,7 +14,7 @@ class UserDetail(models.Model):
 
     user = models.ForeignKey(User, unique=True)
 
-class SignUp(forms.Form):
+class Register(forms.Form):
     '''This will be used to select the file from the local machine'''
     
     Gender = (

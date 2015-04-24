@@ -1,0 +1,46 @@
+.input-group {
+/*    width:85%*/
+}
+
+
+.spacing-table {
+    border-collapse: separate;
+    border-spacing: 0 5px; 
+    height:30px;
+    width:100%;
+}
+.spacing-table th {
+    text-align: left;
+    width: 20%
+}
+.spacing-table td input{
+    width:85%;
+    height: 30px;
+}
+
+.spacing-table td select{
+    width:85%;
+}
+
+.spacing-table td label{
+    width:85%;
+}
+
+.spacing-table td {
+    border-width: 3px 0;
+    padding: 5px 15px;
+}
+.spacing-table td:first-child {
+    border-left-width: 3px;
+    border-radius: 5px 0 0 5px;
+}
+.spacing-table td:last-child {
+    border-right-width: 3px;
+    border-radius: 0 5px 5px 0;
+}
+
+.centered
+{
+    text-align:center;
+    margin-top: 20px;
+}

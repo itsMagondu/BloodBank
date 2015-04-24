@@ -1,0 +1,80 @@
+﻿{% extends "biz/header.html" %}
+{% block title %}SaveALife | Register {% endblock %}
+{% block content %}
+<div class="row-fluid">
+  <div class="span12">
+    <div id="contentInnerSeparator"></div>
+  </div>
+</div>
+</div>
+
+<div class="contentArea">
+  
+  <div class="divPanel notop page-content">
+    
+    <div class="breadcrumbs">
+      <a href="{{base_url}}">Home</a> &nbsp;/&nbsp; <span>About Us</span>
+    </div>
+    
+    <div class="row-fluid">
+      <!--Edit Main Content Area here-->
+      <div class="span8" id="divMain">
+	
+        <h1>Register</h1>
+	<hr>
+	<!-- Form starts here-->
+	<form role="form" class="form-horizontal" action="{{base_url}}register/add" method="POST">{% csrf_token %}
+	  <div class="col-lg-6">
+	    <div class="form-group">
+	      
+	      <table class="spacing-table">
+		{{ form.as_table }}
+	      </table>
+	    </div>
+	    <div class="centered">
+	      <input type="submit" name="submit" id="submit" value="Submit" class="btn btn-info">
+	    </div>
+	  </div>
+	  </form>
+	
+	<!-- Form ends here-->
+      </div>
+      <!--End Main Content Area here-->
+      <!-- Start side bar-->
+      <div class="span4" id="sidebar">
+	<h3 class="sidebox-title">Statistics</h3>
+	<p>Here are some intersting figures on our database</p>
+	
+	<h4 class="sidebox-title">Blood Group Distribution</h4>      
+        <h5>A ( 25% )</h5>
+        <div class="progress progress-info">
+          <div class="bar" style="width: 25%"></div>
+        </div>    
+        <h5>B ( 25% )</h5>
+        <div class="progress progress-success">
+          <div class="bar" style="width: 25%"></div>
+        </div>      
+	
+        <h5>AB ( 10% )</h5>
+        <div class="progress progress-warning">
+          <div class="bar" style="width: 10%"></div>
+        </div>           
+	
+        <h5>0 ( 40% )</h5>
+        <div class="progress progress-danger">
+          <div class="bar" style="width: 40%"></div>
+        </div>  
+
+	<h4 class="sidebox-title">Gender distribution of registered donors</h4>
+	<div class="progress">
+	  <div class="progress-bar progress-bar-success" style="width: 50%">
+	    <span class="sr-only">50% Men (success)</span>
+	  </div>
+	  <div class="progress-bar progress-bar-danger" style="width: 50%">
+	    <span class="sr-only">50% Women (danger)</span>
+	  </div>
+	</div>
+      </div>
+      <!-- End sidebar -->
+    </div>
+    {% endblock %}
