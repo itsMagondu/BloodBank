@@ -27,6 +27,17 @@ class Register(forms.Form):
     ''' Example from See more at: http://ilian.i-n-i.org/django-forms-choicefield-with-dynamic-values/#sthash.DbIACTyM.dpuf'''
     
     '''Obtained from http://changamkamkenya.blogspot.com/2010/09/complete-list-of-47-new-counties-of.html'''
+    
+    Bloodgroup =(
+        ('A+', 'A+'),
+        ('A-', 'A-'),
+        ('AB+', 'AB+'),
+        ('AB-', 'AB-'),
+        ('B+', 'B+'),
+        ('B-', 'B-'),
+        ('O+', 'O+'),
+        ('O-', 'O-'),
+        ) 
     Counties = (
         ('Kiambu','Kiambu'),
         ('Mombasa','Mombasa'),
@@ -83,5 +94,5 @@ class Register(forms.Form):
     Date_Of_Birth = forms.CharField(max_length=100)
     email_Address= forms.EmailField()
     mobile_Number = forms.CharField(max_length=100)
-    bloodgroup = forms.CharField(max_length=100)
+    bloodgroup = forms.ChoiceField(choices=Bloodgroup)
     county = forms.ChoiceField(choices=Counties)

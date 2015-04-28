@@ -71,7 +71,7 @@ def register(request):
     return render_to_response('biz/register.html', param)
 
 
-def register_user():
+def register_user(request):
     if request.method == 'POST':
         """Create user"""
         firstname = request.POST.get("firstname",None)
