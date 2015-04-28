@@ -3,7 +3,7 @@ from django.conf import settings
 
 from django.shortcuts import render_to_response
 
-from apps.administration.models import Register
+from apps.donor.models import Register
 
 @login_required
 def login(request):

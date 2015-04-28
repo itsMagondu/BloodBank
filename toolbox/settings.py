@@ -130,7 +130,7 @@ INSTALLED_APPS = (
     'django.contrib.admindocs',
     'apps.plea',
     'apps.recipient',
-    'apps.administration',
+    'apps.donor',
 )
 
 # A sample logging configuration. The only tangible logging

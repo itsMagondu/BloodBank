@@ -1,4 +1,4 @@
-from apps.administration.models import *
+from apps.donor.models import *
 from django.contrib import admin
 
 class  UserProfileAdmin(admin.ModelAdmin):

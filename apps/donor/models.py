@@ -1,18 +1,18 @@
+from django.contrib.auth.models import User
 from django.db import models
 from django import forms
-from datetime import datetime
-from django.contrib.auth.models import User
 
 class UserProfile(models.Model):
     """Additional user information will be stored here as on top of what django already handles"""
 
-    bloodgroup = models.TextField()
-    county = models.TextField()
+    bloodgroup = models.TextField(default="")
+    county = models.TextField(default="")
     joined = models.DateTimeField(auto_now_add=True)
     date_of_birth = models.DateTimeField()
     gender= models.TextField()
     phone= models.TextField()
     user = models.OneToOneField(User)
+    active = models.BooleanField(default=None)
     
     def __unicode__(self):
         return self.user.username

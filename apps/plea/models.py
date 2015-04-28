@@ -1,5 +1,4 @@
 from django.db import models
-#from bloodbank.recipient import user
 from datetime import datetime
 
 class Plea(models.Model):
