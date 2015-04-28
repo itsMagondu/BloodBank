@@ -3,16 +3,19 @@ from django import forms
 from datetime import datetime
 from django.contrib.auth.models import User
 
-class UserDetail(models.Model):
+class UserProfile(models.Model):
     """Additional user information will be stored here as on top of what django already handles"""
 
-    bloodgroup = models.IntegerField()
-
-    userCounty = models.TextField()
+    bloodgroup = models.TextField()
+    county = models.TextField()
+    joined = models.DateTimeField(auto_now_add=True)
+    date_of_birth = models.DateTimeField()
+    gender= models.TextField()
+    phone= models.TextField()
+    user = models.OneToOneField(User)
     
-    joined = models.DateTimeField(default = datetime.now())
-
-    user = models.ForeignKey(User, unique=True)
+    def __unicode__(self):
+        return self.user.username
 
 class Register(forms.Form):
     '''This will be used to select the file from the local machine'''
@@ -82,4 +85,3 @@ class Register(forms.Form):
     mobile_Number = forms.CharField(max_length=100)
     bloodgroup = forms.CharField(max_length=100)
     county = forms.ChoiceField(choices=Counties)
-

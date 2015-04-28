@@ -23,7 +23,7 @@ class User(models.Model):
     gender = models.TextField(null = True)
     DOB = models.TextField(null = True)
     cellphone  = models.TextField(null=False)
-    joined = models.DateTimeField(default = datetime.now())
+    joined = models.DateTimeField(auto_now_add=True)
 
 
 class UserIllness(models.Model):
