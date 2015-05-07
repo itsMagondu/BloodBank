@@ -131,6 +131,7 @@ INSTALLED_APPS = (
     'apps.plea',
     'apps.recipient',
     'apps.donor',
+    'apps.appadmin',
 )
 
 # A sample logging configuration. The only tangible logging
