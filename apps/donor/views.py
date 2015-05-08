@@ -66,9 +66,10 @@ def email_submit(request):
        
        #Use mail admins instead in future
        for a in admins:
-           EmailMessage(subject, message, to=list(a[1]), from_email=name).send()
+           to = [str(a[1])]
+           EmailMessage(subject, message, to=to, from_email=email).send()
        
-       param['success'] = "Your email was successfully delieved"
+       param['success'] = "Your email was successfully sent"
         
     return render_to_response('biz/contact.html', param, context_instance=RequestContext(request))
 
