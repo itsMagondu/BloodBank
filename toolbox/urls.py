@@ -12,11 +12,12 @@ urlpatterns = patterns('',
     url(r'home/$', 'apps.donor.views.home', name='home'),
     url(r'about/$', 'apps.donor.views.about', name='about'),
     url(r'register/$', 'apps.donor.views.register', name='register'),
+    url(r'register/add/$', 'apps.donor.views.register_user', name='add_donor'),
     url(r'gallery/$', 'apps.donor.views.gallery', name='gallery'),
     url(r'contact/$', 'apps.donor.views.contact', name='contact'),
     url(r'email/submit/$', 'apps.donor.views.email_submit', name='submit_email'),
     url(r'reg/$', 'apps.donor.views.register_user', name='reg'),
-
+ 
     url(r'^login/$', 'django.contrib.auth.views.login', 
     {'template_name': 'login.html'}),
 

@@ -1,5 +1,5 @@
 ﻿{% extends "biz/header.html" %}
-{% block title %}SaveALife | Register {% endblock %}
+{% block title %}Register {% endblock %}
 {% block content %}
 <div class="row-fluid">
   <div class="span12">
@@ -21,16 +21,51 @@
       <div class="span8" id="divMain">
 	
         <h1>Register</h1>
-	<hr>
+        {% if error %}
+        <h4 style="color:red;">{{error}}</h4>
+        {% endif %}
+
+        {% if success %}
+        <h4 style="color:green;">{{success}}</h4>
+        {% endif %}
+        <hr>
 	<!-- Form starts here-->
-	<form role="form" class="form-horizontal" action="{{base_url}}register/add" method="POST">{% csrf_token %}
+	<form  action="{{base_url}}register/" method="POST">{% csrf_token %}
 	  <div class="col-lg-6">
-	    <div class="form-group">
-	      
+	    <!--<div class="form-group">-->
+		 <fieldset>
+                   <input type="text" class="input-block-level" name="surname" placeholder="Surname">
+                   <input type="text" class="input-block-level" name="othernames" placeholder="Other Names">
+                   <input type="text" class="input-block-level" name="dob" placeholder="Date of Birth">
+                   <input type="text" class="input-block-level" name="phone" placeholder="Phone number">
+                   <input type="text" class="input-block-level" name="phone" placeholder="Email address">
+		   
+		   <br />
+
+		   {% for g in gender %}
+		   <label class="radio">
+                     <input type="radio" name="optionsRadios" id="optionsRadios1" value="{{g}}" checked>
+                     {{g}}
+		   </label>
+		   {% endfor %}
+
+		   <div class="btn-group">
+                    <button class="btn btn-medium dropdown-toggle" data-toggle="dropdown">Bloodgroup <span class="caret"></span></button>
+                    <ul class="dropdown-menu">
+		      {% for b in bloodgroup %}
+                        <li>{{b}}</li>
+			{% endfor %}
+                    </ul>
+                </div>
+		   
+                   <br />
+		 </fieldset>
+               </form>
+
+		 <!-- Adding custom form. Magondu
 	      <table class="spacing-table">
 		{{ form.as_table }}
-	      </table>
-	    </div>
+	      </table>-->
 	    <div class="centered">
 	      <input type="submit" name="submit" id="submit" value="Submit" class="btn btn-info">
 	    </div>
@@ -43,7 +78,7 @@
       <!-- Start side bar-->
       <div class="span4" id="sidebar">
 	<h3 class="sidebox-title">Statistics</h3>
-	<p>Here are some intersting figures on our database</p>
+	<p>Here are some interesting figures on our database</p>
 	
 	<h4 class="sidebox-title">Blood Group Distribution</h4>      
         <h5>A ( 25% )</h5>
